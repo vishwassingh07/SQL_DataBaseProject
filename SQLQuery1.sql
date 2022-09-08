@@ -31,7 +31,7 @@ Add State varchar(20);
 
 ------ Deleting Column From Table ------
 Alter Table CustomerInfo
-Drop State ;
+Drop column State ;
 
 ------- Fetching Specific Column From Table -------
 
