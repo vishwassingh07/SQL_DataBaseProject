@@ -40,6 +40,8 @@ Insert Into DepartmentInfo Values (30, 'Receptionist', 105);
 
 Select * From DepartmentInfo;
 
+--------- JOINS -----------
+
 
 Select EmployeeInfo.EmpID, DepartmentInfo.Department, EmployeeInfo.EmpName From DepartmentInfo
 Inner Join EmployeeInfo ON DepartmentInfo.EmpId = EmployeeInfo.EmpID;
@@ -52,3 +54,35 @@ Right Join EmployeeInfo ON DepartmentInfo.EmpId = EmployeeInfo.EmpID;
 
 Select EmployeeInfo.EmpName, DepartmentInfo.DepartmentId From EmployeeInfo
 FULL OUTER JOIN DepartmentInfo ON DepartmentInfo.EmpId = EmployeeInfo.EmpID;
+
+Select EmployeeInfo.EmpName, DepartmentInfo.Department From EmployeeInfo
+Cross Join DepartmentInfo;
+
+
+
+
+--------- VIEWS ------------
+
+Create View VWEmployeeDepartment
+As
+Select EmployeeInfo.EmpID, EmpName, Salary, Department
+From EmployeeInfo
+Inner Join DepartmentInfo ON EmployeeInfo.EmpID = DepartmentInfo.EmpId;
+
+Select * From VWEmployeeDepartment;
+
+SP_HelpText VWEmployeeDepartment;
+
+
+Create View VWEmployeeInfoWithoutSalary
+As
+Select EmpID, EmpName, Gender, Designation
+From EmployeeInfo;
+
+Select * From VWEmployeeInfoWithoutSalary;
+
+Update VWEmployeeInfoWithoutSalary
+Set EmpName = 'Betu' Where EmpID = 102;
+
+Insert Into VWEmployeeInfoWithoutSalary Values(106, 'Yogesh', 'M', 'Manager');
+
